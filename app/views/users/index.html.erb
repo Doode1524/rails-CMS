@@ -1,0 +1,7 @@
+<h1>Users List!</h1>
+
+<ul>
+    <% @users.collect do |user| %>
+    <li><%= user.username %> - <%= user.email %></li>
+    <% end %>
+</ul>
