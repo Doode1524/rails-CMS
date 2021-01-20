@@ -1,10 +1,12 @@
-
+<h1>Current News:</h1>
 <ul>
     <% @articles.each do |a| %>
         <li>Title: <%= a.title.first(100) %>
         <br>Description: <%= a.description.first(200) %>......
         <br>Check it out: <%=link_to a.url, a.url %>
-        <br>Published At: <%= a.published_at %></li>
+        <br>Published At: <%= a.published_at %>
+        <br><%= link_to "Comment", article_path(a)%>
+        </li>
         <br>
         
     <% end %>
