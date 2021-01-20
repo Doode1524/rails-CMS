@@ -1,14 +1,16 @@
 
 <ul>
     <% @articles.each do |a| %>
-        <li>Title: <%= a.title %>
-        <br>Description: <%= a.description %>
-        <br>Published At: <%= a.published_at %>
-        <br>Check it out: <%=link_to a.url, a.url %></li>
+        <li>Title: <%= a.title.first(100) %>
+        <br>Description: <%= a.description.first(200) %>......
+        <br>Check it out: <%=link_to a.url, a.url %>
+        <br>Published At: <%= a.published_at %></li>
         <br>
         
     <% end %>
 
 </ul>
 
-<%= paginate @articles %>
+<div class= "container">
+    <%= paginate @articles %>
+</div>
