@@ -1,0 +1,11 @@
+
+<ul>
+    <% @articles.each do |a| %>
+        <li>Title: <%= a.title %>
+        <br>Description: <%= a.description %>
+        <br>Check it out: <%=link_to a.url, a.url %></li>
+        <br>
+        
+    <% end %>
+
+</ul>
