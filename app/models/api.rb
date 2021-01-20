@@ -18,7 +18,9 @@ class Api < ApplicationRecord
         data = JSON.parse(response.body)
         
         data["data"].each do |d|
-            Article.create(d)
+            if !Article.exists?(d)
+                @article = Article.create(d)
+            end
         end
         
     end
