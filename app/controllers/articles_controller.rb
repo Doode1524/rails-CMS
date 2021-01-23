@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
     
     def index
-        Api.load_data
+        # Api.load_data
 
         if !params[:source].blank?
             articles = Article.by_source(params[:source])

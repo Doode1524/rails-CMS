@@ -21,7 +21,9 @@ class UsersController < ApplicationController
     end
 
     def show
-        
+        # article_info
+        # user_articles
+        # user_articles_comments
     end
 
     def edit
@@ -42,6 +44,7 @@ class UsersController < ApplicationController
         redirect_to :new
     end
 
+
     private
 
     def find_user
@@ -52,4 +55,11 @@ class UsersController < ApplicationController
         params.require(:user).permit(:username, :email, :password)
     end
 
+    # def article_info
+    #     current_user.articles.each do |article|
+    #         article.attributes.except("language", "country", "author", "category")
+    #     end
+    # end
+
 end
+
