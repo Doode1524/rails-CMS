@@ -1,0 +1,22 @@
+<h1>Current News:</h1>
+<br>
+<ul>
+    
+        <li>Title: <%= @article.title %>
+        <br>Description: <%= @article.description %>
+        <br>Check it out: <%=link_to @article.url, @article.url %>
+        <br>Published At: <%= @article.published_at %>
+        <br><%= link_to "Comment", article_path(@article)%>
+        </li>
+        <br>
+
+        <%= form_for @article do |f| %>             
+            <%= f.label 'Comment:' %><br>			 
+            <%= f.text_area :title %><br>
+            <%= f.submit "Comment" %>
+        <% end %> 
+</ul>
+
+  
+        
+    
