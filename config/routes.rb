@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :replies
   resources :articles, only: [:show] do
     resources :comments, only: [:show, :index]
   end

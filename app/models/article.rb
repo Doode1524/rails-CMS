@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments
+    has_many :replies, through: :comments
     validates :title, uniqueness: true
     accepts_nested_attributes_for :comments
     paginates_per 20

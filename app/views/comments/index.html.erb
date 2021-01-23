@@ -1,5 +1,7 @@
 <h1>Comments</h1>
 <h2><%= @article.title %></h2>
-<%@comments.each do |comment|%>
-<%=comment.user.username %> says:  <%=comment.content%>
-<%end%>
+<ul>
+    <%@comments.each do |comment|%>
+        <li><%=comment.user.username %> says:  <%=comment.content%> Latest reply: <%= Reply.last.user.username %> says: <%= Reply.last.content %> </li>
+    <%end%>
+</ul>
