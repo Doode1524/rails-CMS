@@ -1,12 +1,2 @@
 <h1>Welcome! Please Sign Up!</h1>
-<div>
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>  
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>  
-  <%= f.label :password %>
-  <%= f.password_field :password_digest %><br>
-  <%= f.submit %>
-  <% end %>  
-</div>
+<%=render partial: 'form', method: 'post', locals: {user: @user, submit_text: "Signup"} %>
