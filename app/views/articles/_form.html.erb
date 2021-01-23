@@ -1,0 +1,6 @@
+<%=form_for comment do |f|%>
+<%=f.hidden_field :article_id, :value=> article.id%>
+<%=f.label :content, 'Comment:' %>
+<%=f.text_area :content %>
+<%=f.submit 'Submit Comment'%>
+<%end%>

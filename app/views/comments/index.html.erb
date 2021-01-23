@@ -1,5 +1,5 @@
-<% @comments.each do |c| %>
-<ul>
-    <li><%= c.content %></li>
-    <% end %>
-</ul>
+<h1>Comments</h1>
+<h2><%= @article.title %></h2>
+<%@comments.each do |comment|%>
+<%=comment.user.username %> says:  <%=comment.content%>
+<%end%>
