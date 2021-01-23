@@ -1,0 +1,13 @@
+<br>
+<br>
+
+
+<div>
+  <h3>Filter articles:</h3>
+  <%= form_tag("/articles", method: "get") do %>
+    <%= label_tag("Source")%>
+
+    <%= select_tag "source", options_for_select(Article.all_sources), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>

@@ -1,18 +1,15 @@
-<h1>Current News:</h1>
+<%=render partial: 'filter', locals: {articles: @articles}%>
+<%@articles.each do |article|%>
+
+<div>
 <ul>
-    <% @articles.each do |a| %>
-        <li>Title: <%= a.title.first(100) %>
-        <br>Description: <%= a.description.first(200) %>......
-        <br>Check it out: <%=link_to a.url, a.url %>
-        <br>Published At: <%= a.published_at %>
-        <br><%= link_to "Comment", article_path(a)%>
-        </li>
-        <br>
-        
-    <% end %>
-
+    <li><h4><%= article.title %></h4><br>
+    Source: <%=article.source%><br>
+    Decription:<%= article.description.first(200)%><br>
+    Click The Link To Learn More:<%=link_to article.url, article.url%>...<br>
+    Published At: <%= article.published_at %><br>
+    <%=link_to 'Click here to add Comment', article_path(article)%></li>
 </ul>
-
-<div class= "container">
-    <%= paginate @articles %>
 </div>
+<%end%>
+<%= paginate @articles %>
