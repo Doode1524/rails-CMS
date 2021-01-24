@@ -1,15 +1,20 @@
-<%=render partial: 'filter', locals: {articles: @articles}%>
+<%= tag.div class: "container" do %><%=render partial: 'filter', locals: {articles: @articles} %> 
+<% end %>
+<br>
+<div class="row">
 <%@articles.each do |article|%>
+<div class="col-md-10">
 
-<div>
 <ul>
-    <li><h4><%= article.title %></h4><br>
+    <li><h4><%= article.title %></h4>
     Source: <%=article.source%><br>
     Decription:<%= article.description.first(200)%><br>
     Click The Link To Learn More:<%=link_to article.url, article.url%>...<br>
     Published At: <%= article.published_at %><br>
-    <%=link_to 'Click here to add Comment', article_path(article)%></li>
+    <%=link_to 'Click here to add Comment', article_path(article), class: "btn btn-primary" %></li>
+    <br>
 </ul>
 </div>
 <%end%>
+</div>
 <%= paginate @articles %>

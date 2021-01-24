@@ -55,6 +55,10 @@ class UsersController < ApplicationController
         params.require(:user).permit(:username, :email, :password)
     end
 
+    def logout
+        session.clear
+    end
+
     # def article_info
     #     current_user.articles.each do |article|
     #         article.attributes.except("language", "country", "author", "category")
