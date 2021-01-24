@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/login'
-  get 'sessions/welcome'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'welcome', to: 'sessions#welcome'
   resources :replies
   resources :articles, only: [:show] do
     resources :comments, only: [:show, :index]
