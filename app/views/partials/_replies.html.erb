@@ -4,6 +4,7 @@ Replies:
         <ul>
             <% comment.replies.each do |reply| %>
                 <li><%= reply.content%></li>
+                <%= link_to "Edit Reply", edit_reply_path(reply) %>
             <%end%>
         </ul>
     </div>

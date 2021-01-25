@@ -13,9 +13,30 @@ class RepliesController < ApplicationController
         end
     end
 
+    def edit
+        find_reply
+        @comment = @reply.comment
+    end
+
+    def update
+        find_reply
+        article = @reply.comment.article
+        if @reply.update(reply_params)
+            redirect_to article_comments_path(article)
+        else 
+            render :edit
+        end
+        
+
+    end
+
     private
 
     def reply_params
         params.require(:reply).permit(:content, :comment_id)
+    end
+
+    def find_reply
+        @reply = Reply.find_by(params[:id])
     end
 end
