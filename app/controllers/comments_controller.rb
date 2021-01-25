@@ -23,12 +23,13 @@ class CommentsController < ApplicationController
         # end
     end
 
-    def show 
+    def show
+        @article = @comment.article
         if params[:article_id]
             @comments = Article.find(params[:article_id]).comments
             @article = Article.find(params[:article_id])
         else
-            redirect_to article_path(article)
+            redirect_to article_path(@article)
         end
 
     end

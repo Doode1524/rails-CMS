@@ -1,13 +1,14 @@
+  
 Replies:
 
     <div class="card">
         <ul>
             <% comment.replies.each do |reply| %>
                 <li><%= reply.content%></li>
-                <%= link_to "Edit Reply", edit_reply_path(reply) %>
+                <%=link_to "Edit Reply", edit_reply_path(reply)%> <br>
+                <%=link_to "Delete Reply", reply , method: :delete,  data:{Confirm: "Delete?"}%>
             <%end%>
         </ul>
+    
     </div>
-</div>
-   
    

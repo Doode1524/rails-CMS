@@ -1,8 +1,26 @@
-  
 
+
+<div class="card">
 <%=form_for reply do |f|%>
+ <% if reply.errors.any? %>
+   <div id="error_explanation">
+    <h4>Error:</h4>
+     <ul>
+       <% reply.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+
+ <div class="field<%= ' field_with_errors' if reply.errors[:content].any? %>">
+
+
+
 <%=f.hidden_field :comment_id, :value=> comment.id%>
 <%=f.label :content, 'Reply:' %><br>
 <%=f.text_area :content %><br>
 <%=f.submit 'Submit Reply'%>
 <%end%>
+</div>

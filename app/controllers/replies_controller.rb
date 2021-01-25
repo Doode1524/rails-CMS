@@ -1,15 +1,15 @@
 class RepliesController < ApplicationController
     def create
-        reply = Reply.new(reply_params)
-        comment = reply.comment
-        article = comment.article
-        reply.user_id = current_user.id
+        @reply = Reply.new(reply_params)
+        @comment = @reply.comment
+        @article = @comment.article
+        @reply.user_id = current_user.id
 
-        if reply.save
+        if @reply.save
 
-        redirect_to article_comments_path(article)#route to art/id/com/id
+        redirect_to article_comments_path(@article)#route to art/id/com/id
         else
-             render '/articles/show'
+             render :'/comments/index'
         end
     end
 
@@ -26,8 +26,13 @@ class RepliesController < ApplicationController
         else 
             render :edit
         end
-        
+    end
 
+    def destroy
+        find_reply
+        article = @reply.comment.article
+        @reply.delete
+        redirect_to article_comments_path(article)
     end
 
     private

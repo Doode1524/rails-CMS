@@ -5,13 +5,16 @@
 <%@articles.each do |article|%>
 <div class="col-md-10 card">
 
+<% article.comments.each do |r| r.replies%>
+<% end %>
+
 <ul>
     <h4><%= article.title %></h4>
     Source: <%=article.source%><br>
     Decription:<%= article.description.first(200)%><br>
     <%=link_to "Click Here To Learn More:", article.url%>...<br>
     Published At: <%= article.published_at %><br>
-    <%=link_to 'Click here to add Comment', article_comments_path(article), class: "btn btn-primary" %>
+    <%=link_to "Comments: (#{article.comments.length})", article_comments_path(article), class: "btn btn-primary" %>
     <br>
 </ul>
 </div>
