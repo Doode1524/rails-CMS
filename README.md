@@ -23,3 +23,20 @@ Things you may want to cover:
 
 * ...
 # rails-CMS
+
+
+
+
+
+
+
+################################################################
+
+-authorizations
+-yield
+-omniauth
+-subscriptions
+-gems
+-devise????
+-"break" week
+
