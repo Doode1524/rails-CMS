@@ -47,14 +47,15 @@ class CommentsController < ApplicationController
 
 
     def edit
-
+        @article = @comment.article
     end
 
     def update
-        if @comment.update
-            redirect_to comment_path(@comment)
+        article = @comment.article
+        if @comment.update(comment_params)
+            redirect_to article_comments_path(article)
         else
-            render :new           
+            render :edit          
             
         end
     end

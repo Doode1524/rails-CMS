@@ -7,7 +7,7 @@ class RepliesController < ApplicationController
 
         if reply.save
 
-        redirect_to article_path(article)#route to art/id/com/id
+        redirect_to article_comments_path(article)#route to art/id/com/id
         else
              render '/articles/show'
         end
