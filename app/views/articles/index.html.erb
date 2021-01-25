@@ -3,15 +3,15 @@
 <br>
 <div class="row">
 <%@articles.each do |article|%>
-<div class="col-md-10">
+<div class="col-md-10 card">
 
 <ul>
-    <li><h4><%= article.title %></h4>
+    <h4><%= article.title %></h4>
     Source: <%=article.source%><br>
     Decription:<%= article.description.first(200)%><br>
     Click The Link To Learn More:<%=link_to article.url, article.url%>...<br>
     Published At: <%= article.published_at %><br>
-    <%=link_to 'Click here to add Comment', article_path(article), class: "btn btn-primary" %></li>
+    <%=link_to 'Click here to add Comment', article_path(article), class: "btn btn-primary" %>
     <br>
 </ul>
 </div>
