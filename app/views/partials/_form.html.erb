@@ -1,0 +1,8 @@
+<div class="card">
+<%=form_for comment do |f|%>
+<%=f.hidden_field :article_id, :value=> article.id%>
+<%=f.label :content, 'Comment:' %><br>
+<%=f.text_area :content %><br>
+<%=f.submit submit_text %>
+<%end%>
+</div>

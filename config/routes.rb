@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   post 'logout' => 'sessions#destroy'
 
-  resources :replies
   resources :articles, only: [:show] do
     resources :comments, only: [:show, :index]
   end
   
+  resources :replies
   resources :comments
   resources :users
   resources :articles

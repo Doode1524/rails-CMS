@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
     
     def index
         # Api.load_data
+        @comment = Comment.new
 
         if !params[:source].blank?
             articles = Article.by_source(params[:source])
@@ -13,8 +14,9 @@ class ArticlesController < ApplicationController
     end
 
     def show
-        find_article
+        @article = Article.find_by_id(params[:id])
         @comment = Comment.new
+        @reply = Reply.new
     end
 
     def create

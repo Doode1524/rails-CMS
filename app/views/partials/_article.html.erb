@@ -1,0 +1,7 @@
+<div class='card'>
+<h4><%= article.title %></h4><br>
+    Source: <%=article.source%><br>
+    Decription:<%= article.description.first(200)%>...<br>
+        <%=link_to "Click here to learn more.", article.url%>
+    Published At: <%= article.published_at %><br>
+</div>

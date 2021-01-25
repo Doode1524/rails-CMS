@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
     
-    before_action :find_comment, only: [:show, :edit, :update, :destroy]
+    before_action :find_comment, only: [:show, :edit, :update, :destroy, :delete]
     
     def index
+        @comment = Comment.new
         if params[:article_id]
             @comments = Article.find(params[:article_id]).comments     
-            @article = Article.find(params[:article_id])   
+            @article = Article.find(params[:article_id])
+            @reply = Reply.new
         else
             @comments = Comment.all
         end
@@ -13,6 +15,22 @@ class CommentsController < ApplicationController
     
     def new
         @comment = Comment.new
+        # comment.user_id = user.id
+        # if comment.save
+        #     redirect_to article_comments_path(article)
+        # else
+        #     render '/articles/show'
+        # end
+    end
+
+    def show 
+        if params[:article_id]
+            @comments = Article.find(params[:article_id]).comments
+            @article = Article.find(params[:article_id])
+        else
+            redirect_to article_path(article)
+        end
+
     end
 
     def create
@@ -41,9 +59,10 @@ class CommentsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
+        article = @comment.article
         @comment.delete
-        redirect_to :new
+        redirect_to article_comments_path(article)
     end
 
     private

@@ -1,0 +1,17 @@
+  
+Comments:
+<%article.comments.each do |comment| %>
+<div class='card'>
+    <div class="card">
+        <%=comment.user.username%><br>
+            <%= comment.content%>
+
+            
+            <%= link_to 'Delete', comment, method: :delete, data:{Confirm: "Delete?"}%> 
+            <%= link_to 'Edit', edit_comment_path(comment)%>
+            <%= render partial: '/partials/rform', locals: {reply: @reply, comment: comment}%>
+    </div>
+
+    <%= render partial: '/partials/replies', locals:{article: @article, comment: comment}%>
+
+        <%end%>

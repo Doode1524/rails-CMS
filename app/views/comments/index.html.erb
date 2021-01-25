@@ -1,13 +1,9 @@
-<h1>Comments</h1>
-<h2><%= @article.title %></h2>
-<ul>
-    <%@comments.each do |comment|%>
-    <br>       
-    <li><%=comment.user.username %> says:  <%=comment.content%> </li>
-        <%comment.replies.each do |reply|%>
-            <ul>
-                <li><%=reply.user.username %> replied: <%= reply.content %></li>
-            </ul>
-        <%end%> 
-    <%end%>
-</ul>
+
+
+<%=render partial: '/partials/article', locals: {article: @article}%><br>
+
+
+<%=render partial: '/partials/form', locals: {comment: @comment, article: @article, submit_text: "Submit Comment"}%><br>
+
+
+<%= render partial: '/partials/comments', locals:{article: @article}%>

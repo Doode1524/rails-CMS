@@ -1,6 +1,10 @@
-<h1>Current News:</h1>
-<br>
-<%=render partial: 'form', locals: {comment:@comment, article: @article}%>
+<%=render partial: '/partials/article', locals: {article: @article}%><br>
+
+
+<%=render partial: '/partials/form', locals: {comment: @comment, article: @article, submit_text: "Submit Comment"}%><br>
+
+
+<%= render partial: '/partials/comments', locals:{article: @article}%>
   
         
     

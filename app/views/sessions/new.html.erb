@@ -7,7 +7,9 @@
   <div class= "container">
   <div class="form-group">
   <div class="col-md-3 mx-auto">
+
 <%= form_for(:session, url: login_path) do |f| %>
+
 <%= f.label :username %>:
 <%= f.text_field :username, class: "form-control" %><br>
 

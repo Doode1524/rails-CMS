@@ -1,0 +1,22 @@
+
+<div>
+<h4><%= @article.title %></h4><br>
+Source: <%=@article.source%><br>
+Decription:<%= @article.description.first(200)%>...<br>
+<%=link_to "Click here to learn more.",@article.url%><br>
+Published At: <%= @article.published_at %><br>
+</div>
+
+<%=render partial: 'form', locals: {comment:@comment, article: @article}%><br>
+
+<%@article.comments.each do |comment| %>
+<div class="card">
+<%=comment.user.username%><br>
+<%= comment.content%><br>
+<%= link_to 'Delete', comment, method: :delete, data:{Confirm: "Delete?"}%>
+<%= link_to 'Edit', edit_comment_path %>
+</div>
+
+
+
+<%end%>
