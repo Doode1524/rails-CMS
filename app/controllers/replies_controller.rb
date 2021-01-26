@@ -1,4 +1,7 @@
 class RepliesController < ApplicationController
+    before_action :require_login
+
+    
     def create
         @reply = Reply.new(reply_params)
         @comment = @reply.comment
@@ -44,4 +47,5 @@ class RepliesController < ApplicationController
     def find_reply
         @reply = Reply.find_by(params[:id])
     end
+
 end

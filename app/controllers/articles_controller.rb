@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    before_action :require_login 
     
     def index
         # Api.load_data

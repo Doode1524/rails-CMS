@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    before_action :require_login 
     
     before_action :find_comment, only: [:show, :edit, :update, :destroy, :delete]
     
