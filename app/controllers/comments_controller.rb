@@ -15,12 +15,6 @@ class CommentsController < ApplicationController
     
     def new
         @comment = Comment.new
-        # comment.user_id = user.id
-        # if comment.save
-        #     redirect_to article_comments_path(article)
-        # else
-        #     render '/articles/show'
-        # end
     end
 
     def show

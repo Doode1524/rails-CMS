@@ -11,9 +11,11 @@
 <%= f.label :password %>:
 <%= f.password_field :password, class: "form-control" %><br>
 
-<%#=collection_check_boxes(:user, :subscription_ids, Article.all, :id, :source) %>
+<%=collection_check_boxes(:user, :subscription_ids, Article.select(:source).distinct, :id, :source) %>
 
 <%= f.submit submit_text %>
+
+
 
 
 

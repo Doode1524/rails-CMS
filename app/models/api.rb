@@ -16,14 +16,14 @@ class Api < ApplicationRecord
         
         response = Net::HTTP.get_response(uri)
         data = JSON.parse(response.body)
-        
+
         data["data"].each do |d|
             if !Article.exists?(d)
                 @article = Article.create(d)
             end
         end
-        
-    end
+      
+    end          
     
 end
 
