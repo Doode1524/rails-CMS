@@ -1,19 +1,18 @@
 class CommentsController < ApplicationController
     before_action :require_login 
-    
     before_action :find_comment, only: [:show, :edit, :update, :destroy, :delete]
+    before_action :find_article, only: [:index]
+    before_action :article_comments, only: [:index]
     
     def index
-        @comment = Comment.new
-        if params[:article_id]
-            @comments = Article.find(params[:article_id]).comments     
-            @article = Article.find(params[:article_id])
+        if @article
+            @comment = Comment.new
             @reply = Reply.new
         else
-            @comments = Comment.all
+          @comments = Comment.all
         end
     end
-    
+
     def new
         @comment = Comment.new
     end
@@ -70,6 +69,15 @@ class CommentsController < ApplicationController
     def comment_params
         params.require(:comment).permit(:content, :article_id)
     end
+
+    def find_article
+        @article = Article.find(params[:article_id]) 
+    end
+
+    def article_comments
+        @comments= @article.comments if @article
+    end
+
 
 
 end

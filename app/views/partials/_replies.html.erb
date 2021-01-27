@@ -5,9 +5,11 @@ Replies:
         <ul>
             <% comment.replies.each do |reply| %>
                 <li><%= reply.content%></li>
+                <% if reply.user.id == current_user.id%>    
                 <%=link_to "Edit Reply", edit_reply_path(reply)%> <br>
                 <%=link_to "Delete Reply", reply , method: :delete,  data:{Confirm: "Delete?"}%>
             <%end%>
+            <% end %>
         </ul>
     
     </div>

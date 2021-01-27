@@ -1,17 +1,27 @@
-
 Comments:
 <%article.comments.each do |comment| %>
 <div class='card'>
     <div class="card">
-        <%=comment.user.username%><br>
+       <%=comment.user.username%><br>
             <%= comment.content%>
 
-            
+            <% if current_user.id == comment.user.id%>
             <%= link_to 'Delete', comment, method: :delete, data:{Confirm: "Delete?"}%> 
             <%= link_to 'Edit', edit_comment_path(comment)%>
+            <%end%>
             <%= render partial: '/partials/rform', locals: {reply: @reply, comment: comment}%>
+    
     </div>
 
     <%= render partial: '/partials/replies', locals:{article: @article, comment: comment}%>
 
         <%end%>
+
+
+
+
+ <!--<div class="row">
+    <div class="col-4 d-flex justify-content-center">
+        // Image
+    </div>
+</div>-->
