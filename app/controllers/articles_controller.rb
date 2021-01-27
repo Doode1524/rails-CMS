@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
     
     def index
         # Api.load_data
+        @users = User.all
         @comment = Comment.new
 
         if !params[:source].blank?

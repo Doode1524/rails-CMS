@@ -3,7 +3,9 @@ class User < ApplicationRecord
     has_many :articles, through: :comments
     has_many :replies
     has_many :subscriptions
+    has_one_attached :avatar
     has_secure_password
+
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

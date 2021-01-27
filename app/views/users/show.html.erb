@@ -1,7 +1,9 @@
 <h1>Hello, <%= @user.username %>! </h1>
 
 <%= @user.username %> - <%= @user.email %><br><br>
-
+<% if @user.avatar.attached? %>
+ <img src="<%=(url_for(@user.avatar))%>" class="img-fluid img-thumbnail"> 
+<% end %>
 
 <ul>
 <% @user.articles.uniq.each do |article|%>

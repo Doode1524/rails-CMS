@@ -1,23 +1,54 @@
-<%= tag.div class: "container" do %><%=render partial: 'filter', locals: {articles: @articles} %> 
-<% end %>
-<br>
-<div class="row">
-<%@articles.each do |article|%>
-<div class="col-md-10 card">
+<%= tag.div class: "container" do %><%=render partial: 'filter', locals: {articles: @articles} %><br> 
+    <% end %>
+    <div class="row">
+        <div class="col-md-9">
+            <%@articles.each do |article|%>
+                <% article.comments.each do |r| r.replies%>
+                <% end %>
 
-<% article.comments.each do |r| r.replies%>
-<% end %>
+                <ul>
+                    <h4><%= article.title %></h4>
+                    Source: <%=article.source%><br>
+                    Decription:<%= article.description.first(200)%><br>
+                    <%=link_to "Click Here To Learn More:", article.url%>...<br>
+                    Published At: <%= article.published_at %><br>
+                    <%=link_to "Comments: (#{article.comments.length})", article_comments_path(article), class: "btn btn-primary" %>
+                    <br>
+                </ul>
+                <%end%> 
+        </div>
 
-<ul>
-    <h4><%= article.title %></h4>
-    Source: <%=article.source%><br>
-    Decription:<%= article.description.first(200)%><br>
-    <%=link_to "Click Here To Learn More:", article.url%>...<br>
-    Published At: <%= article.published_at %><br>
-    <%=link_to "Comments: (#{article.comments.length})", article_comments_path(article), class: "btn btn-primary" %>
-    <br>
-</ul>
+        <div class="col-md-2">
+            <div class="list-group">    
+                <h4>USER LIST</h4><br>
+                <%@users.each do |u| %>
+                <!--<li class="list-group-item">
+                    <% if u.avatar.attached? %>
+                    <span style="width: 10%; height: 10%;"><img src="<%#=(url_for(u.avatar)) %>"></span>
+                    <% end %>-->
+                    <%=link_to "#{u.username}", user_path(u), class: "list-group-item list-group-item-action list-group-item-dark" %>
+      
+                <% end %>  
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <%= paginate @articles %>
+    </div>  
+  
 </div>
-<%end%>
-</div>
-<%= paginate @articles %>
+
+
+
+
+
+     
+
+
+
+
+
+
+    
+
