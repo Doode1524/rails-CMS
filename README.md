@@ -40,3 +40,11 @@ Things you may want to cover:
 -devise????
 -"break" week
 
+
+
+#################
+
+- virtual box
+- distrowatch.com (ubunto)
+- download mirrors
+
