@@ -1,0 +1,29 @@
+ <div class= "container">
+  <div class="col-md-3 mx-auto">
+<h1>Add Picture</h1>
+</div>
+</div>
+<br>
+<div class= "container">
+  <div class="form-group">
+  <div class="col-md-3 mx-auto">
+
+<%= form_for @user do |f| %>
+
+
+<%= f.label 'Profile Photo' %>:
+<%= f.file_field :avatar, class: "form-control btn-sm" %><br>
+
+
+<%= f.submit 'Update' %>
+
+
+
+
+
+</div>
+
+    </div>
+  </div>
+  </div>
+<%end%>
