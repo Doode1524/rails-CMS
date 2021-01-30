@@ -1,29 +1,45 @@
- <div class= "container">
-  <div class="col-md-6 mx-auto">
-<h1>Welcome! Please Log In!</h1>
-</div>
-</div>
-
-  <div class= "container">
-  <div class="form-group">
-  <div class="col-md-3 mx-auto">
-
-<%= form_for(:session, url: login_path) do |f| %>
 
 
+    <br>
+    <br>
+    <main class="form-signin">
 
-<%= f.label :username %>:
-<%= f.text_field :username, class: "form-control" %><br>
+        <%= form_for(:session, url: login_path) do |f| %>
 
-<%= f.label :email %>:
-<%= f.text_field :email, class: "form-control" %><br>
+      <div class="text-center mb-4">
+        <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW6SE4Gc77-uwiaFI2mP3nIi1dqenK66qLbQ&usqp=CAU" alt="" width="100" height="100">
+        <h2>DivisioN</h2>
+     </div>
 
-<%= f.label :password %>:
-<%= f.password_field :password, class: "form-control" %><br>
 
-<%= f.submit :Login %>
-    </div>
-  </div>
-  </div>
-<%end%>
+      <div class="form-label-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "form-control" %><br>
+      </div>
 
+      <div class="form-label-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %><br>
+        </div>
+
+      <div class="form-label-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %><br>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+        <%= link_to "Sign in with Google", '/auth/google_oauth2', method: :post, class: "button btn btn-lg btn-primary btn-block" %>
+        
+      <% end %>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2021 2-Slice-Gaming</p>
+    </main>
+   
+
+  
