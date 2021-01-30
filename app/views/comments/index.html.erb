@@ -17,7 +17,11 @@
 
                     <div class="row pb-4">
                         <div class="col-md-12">
-                            <div class="media"> <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
+                            <div class="media">    
+                                <% if c.user.avatar.attached? %>
+                                    <img src="<%=(url_for(c.user.avatar))%>" class="mr-3 rounded-circle"> 
+                                <% end %>
+   
                                 <div class="media-body">
                                     <div class="row">
                                         <div class="col-8 d-flex">
@@ -33,11 +37,14 @@
 
                                     <% c.replies.collect do |r|%>
                                         <div class="media mt-4"> 
-                                                <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="https://i.imgur.com/xELPaag.jpg" /></a>
+                                            <% if r.user.avatar.attached? %>
+                                                <img src="<%=(url_for(r.user.avatar))%>" class="mr-3 rounded-circle"> 
+                                            <% end %>
+   
                                             <div class="media-body">
                                                 <div class="row">
                                                     <div class="col-12 d-flex">
-                                                        <h5>Simona Disa</h5> <span>- 3 hours ago</span> 
+                                                        <h5><%=r.user.username%></h5> <span>- 3 hours ago</span> 
                                                     </div>
                                                 </div>
 
