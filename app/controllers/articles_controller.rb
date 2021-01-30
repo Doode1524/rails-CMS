@@ -8,10 +8,10 @@ class ArticlesController < ApplicationController
 
         if !params[:source].blank?
             articles = Article.by_source(params[:source])
-            @articles = Kaminari.paginate_array(articles).page(params[:page]).per(25)
+            @articles = Kaminari.paginate_array(articles).page(params[:page]).per(10)
         else
             articles = Article.all.sort_by(&:published_at).reverse
-            @articles = Kaminari.paginate_array(articles).page(params[:page]).per(25)
+            @articles = Kaminari.paginate_array(articles).page(params[:page]).per(10)
         end
     end
 

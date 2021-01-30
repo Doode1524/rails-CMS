@@ -1,56 +1,71 @@
-<%= tag.div class: "container" do %><%=render partial: 'filter', locals: {articles: @articles} %><br> 
-    <% end %>
-    <div class="row">
-        <div class="col-md-9">
-            <%@articles.each do |article|%>
-                <% article.comments.each do |r| r.replies%>
-                <% end %>
+<main role="main">
 
-                <ul>
-                    <h4><%= article.title %></h4>
-                    Source: <%=article.source%><br>
-                    Decription:<%= article.description.first(200)%><br>
-                    <%=link_to "Click Here To Learn More:", article.url%>...<br>
-                    Published At: <%= article.published_at %><br>
-                    <%=link_to "Comments: (#{article.comments.length})", article_comments_path(article), class: "btn btn-primary" %>
-                    <br>
-                </ul>
-                <%end%> 
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Welcome to <*DivisioN*> News!</h1>
+          <p>DivisioN News is your go-to source for the most recent and controversial news stories from around the globe. Here at DivisioN, you can unnecessarily post your unwanted opinions on subjects no one in real life actually cares about, and argue with others about their own personal opinions and beliefs! Because thats what the world needs more of. MORE DIVISION!</p>
+          <p>Click below to start Arguing!</p>
+          <p><a class="btn btn-primary btn-lg" href="/users" role="button">Argue with others &raquo;</a></p>
         </div>
+      </div>
 
-        <div class="col-md-2">
-            <div class="list-group">    
-                <h4>USER LIST</h4><br>
-                <%@users.each do |u| %>
-                    <% if u.avatar.attached? %>
-                <li class="list-group-item list-group-item-action list-group-item-dark bg-primary" ><img src="<%=(url_for(u.avatar)) %>" style="width: 50px; height: 50px; border-radius: 50px"> &nbsp&nbsp <%=link_to "#{u.username}", user_path(u), class: "text-light" %></li>
+      <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-9">
+                    <%@articles.each do |article|%>
+                    <% article.comments.each do |r| r.replies%>
                     <% end %>
+
+                    <ul class="card text-center border-dark mb-3 shadow-sm p-3 bg-white rounded">
+                        <h2><strong><%= article.title %></h2></strong><br>
+                        <h4 class="text-center card border-secondary p-2">Source: <%=article.source%></h4>
+                        <p><em><%= article.description.first(250)%></em></p>
+                        <p> <%=link_to "View Details:", article.url, class: "btn btn-secondary",    role: "button"%>&nbsp <%=link_to "Comments: (#{article.comments.length})   ", article_comments_path(article), class: "btn btn-secondary" %></p>
+                    </ul>
+
+                    <% end %>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="list-group">    
+                        
+                        <%@users.each do |u| %>
+                        <% if u.avatar.attached? %>
+                        <li class="list-group-item list-group-item-action list-group-item-dark bg-secondary" ><img src="<%=(url_for(u.avatar)) %>" style="width: 50px; height: 50px; border-radius: 50px"> &nbsp&nbsp <%=link_to "#{u.username}", user_path(u), class: "text-light" %></li>
+                        <% end %>
                     
       
-                <% end %>  
+                        <% end %>  
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div>
+        </div> <!-- /container -->
 
-    <div class="container-fluid">
-        <%= paginate @articles %>
-    </div>  
+        <div class="container-fluid col-4">
+            <%= paginate @articles %>
+        </div>  
   
-</div>
+
+        
 
 
 
 
+    </main>
 
+    <footer class="container">
+      <p>&copy; 2021 2-Slice-Gaming</p>
+    </footer>
 
-
-
-     
-
-
-
-
-
-
-    
-
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
