@@ -1,7 +1,72 @@
-<%=render partial: '/partials/article', locals: {article: @article}%><br>
+<div class="container mb-5 mt-5">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12">
+            
+                <h3 class="text-center mb-5"> Ready: FIGHT! </h3>
+                <%=form_for @comment do |f|%>
+                <%=f.hidden_field :article_id, :value=> @article.id%>
+                <%=f.label :content, 'Comment:' %><br>
+                <%=f.text_area :content %><br>
+                <%=f.submit %>
+                <%end%>
+                <br>
+             
+                
+                <% @article.comments.each do |c| %>
+
+                    <div class="row pb-4">
+                        <div class="col-md-12">
+                            <div class="media"> <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
+                                <div class="media-body">
+                                    <div class="row">
+                                        <div class="col-8 d-flex">
+                                            <h5><%=c.user.username%></h5> <span>- 2 hours ago</span>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <div class="pull-right reply"> <a href="#"><span><i class="fa   fa-reply"></i> reply</span></a></div>
+                                        </div>
+                                    </div>
+
+                                    <%= c.content %>  
+
+                                    <% c.replies.collect do |r|%>
+                                        <div class="media mt-4"> 
+                                                <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="https://i.imgur.com/xELPaag.jpg" /></a>
+                                            <div class="media-body">
+                                                <div class="row">
+                                                    <div class="col-12 d-flex">
+                                                        <h5>Simona Disa</h5> <span>- 3 hours ago</span> 
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <%= r.content %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>           
+</div>
 
 
-<%=render partial: '/partials/form', locals: {comment: @comment, article: @article, submit_text: "Submit Comment"}%><br>
 
 
-<%= render partial: '/partials/comments', locals:{article: @article}%>
+                                            
+
+
+
+
+                                
+                                
+                                                
+                                     
+                

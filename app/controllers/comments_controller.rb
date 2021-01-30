@@ -29,12 +29,12 @@ class CommentsController < ApplicationController
     end
 
     def create
-        comment = Comment.new(comment_params)
-        article = comment.article
-        comment.user_id = current_user.id
+        @comment = Comment.new(comment_params)
+        @article = @comment.article
+        @comment.user_id = current_user.id
      
-        if comment.save
-        redirect_to article_comments_path(article)
+        if @comment.save
+        redirect_to article_comments_path(@article)
         else
             render '/articles/show'
         end
@@ -46,9 +46,9 @@ class CommentsController < ApplicationController
     end
 
     def update
-        article = @comment.article
+        @article = @comment.article
         if @comment.update(comment_params)
-            redirect_to article_comments_path(article)
+            redirect_to article_comments_path(@article)
         else
             render :edit          
             
