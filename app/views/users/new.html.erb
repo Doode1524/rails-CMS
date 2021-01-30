@@ -4,10 +4,10 @@
     <br>
     <main class="form-signin">
 
-        <%= form_for(:session, url: login_path) do |f| %>
+        <%= form_for(:user, url: users_path) do |f| %>
 
       <div class="text-center mb-4">
-        <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW6SE4Gc77-uwiaFI2mP3nIi1dqenK66qLbQ&usqp=CAU" alt="" width="100" height="100">
+       <%= image_tag "divideicon2.png", class: 'mb-4', style: 'height: 100px; width: 100px;' %>
         <h2>DivisioN</h2>
      </div>
 
@@ -25,6 +25,11 @@
       <div class="form-label-group">
         <%= f.label :password %>
         <%= f.password_field :password, class: "form-control" %><br>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.label 'Profile Photo' %>
+        <%= f.file_field :avatar, class: "form-control btn" %><br>
       </div>
 
       <div class="checkbox mb-3">
