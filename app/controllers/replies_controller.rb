@@ -1,6 +1,11 @@
 class RepliesController < ApplicationController
     before_action :require_login
 
+    def new
+        @reply = Reply.new
+        @comment = Comment.find_by_id(params[:id])
+        @article = @comment.article
+    end
     
     def create
         @reply = Reply.new(reply_params)
@@ -10,7 +15,7 @@ class RepliesController < ApplicationController
 
         if @reply.save
 
-        redirect_to article_comments_path(@article)#route to art/id/com/id
+        redirect_to article_comments_path(@article) #route to art/id/com/id
         else
              render :'/comments/index'
         end

@@ -4,9 +4,9 @@
             <div class="col-md-12">
             
                 <h3 class="text-center mb-5"> Ready: FIGHT! </h3>
-                <%=form_for @comment do |f|%>
-                <%=f.hidden_field :article_id, :value=> @article.id%>
-                <%=f.label :content, 'Comment:' %><br>
+                <%=form_for @reply do |f|%>
+                <%=f.hidden_field :comment_id, :value=> @comment.id%>
+                <%=f.label :content, 'Reply:' %><br>
                 <%=f.text_area :content %><br>
                 <%=f.submit %>
                 <%end%>
@@ -76,17 +76,3 @@
         </div>
     </div>           
 </div>
-
-
-
-
-                                            
-
-
-
-
-                                
-                                
-                                                
-                                     
-                
