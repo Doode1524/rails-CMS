@@ -25,10 +25,22 @@
                        
                         
                         
-                        <% if @user.avatar.attached? %>
-                        <img src="<%=(url_for(@user.avatar))%>" class="img-fluid img-thumbnail" style= "height: 470px; width: 470px;"> 
+                    <% if @user.avatar.attached? %>
+                    <img src="<%=(url_for(@user.avatar))%>" class="img-fluid img-thumbnail" style= "height: 470px; width: 470px;"> 
+                    <% end %>
+                    <h3 class="text-center"><%= @user.email %></h3><br>
+
+                    <h2 class="text-center">Users</h2>
+                    <div class="list-group">    
+                        
+                        <%@users.each do |u| %>
+                        <% if u.avatar.attached? %>
+                        <li class="list-group-item list-group-item-action list-group-item-dark bg-secondary" ><img src="<%=(url_for(u.avatar)) %>" style="width: 50px; height: 50px; border-radius: 50px"> &nbsp&nbsp <%=link_to "#{u.username}", user_path(u), class: "text-light" %></li>
                         <% end %>
-                    <h3 class="text-center"><%= @user.email %></h3>    
+                    
+      
+                        <% end %>  
+                    </div>    
                    
                 </div>
 

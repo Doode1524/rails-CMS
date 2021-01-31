@@ -11,9 +11,20 @@
       </div>
 
       <div class="container">
-            <!-- Example row of columns -->
+            <div class="text-center">
+              <h3>Filter Source:</h3>
+              <%= form_tag("/articles", method: "get") do %>
+              <%= label_tag("Source")%>
+
+              <%= select_tag "source", options_for_select(Article.all_sources), include_blank: true %>
+              <%= submit_tag "Filter" %>
+              <% end %>
+            </div>
+
             <div class="row">
                 <div class="col-md-9">
+
+                  
                     <%@articles.each do |article|%>
                     <% article.comments.each do |r| r.replies%>
                     <% end %>
