@@ -1,29 +1,60 @@
-<h1>Hello, <%= @user.username %>! </h1>
+<main role="main">
 
-<%= @user.username %> - <%= @user.email %><br><br>
-<% if @user.avatar.attached? %>
- <img src="<%=(url_for(@user.avatar))%>" class="img-fluid img-thumbnail"> 
-<% end %>
+        <br>
+      <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-7">
+                    <h1 class="text-center">Trending Arguments</h1><br>
+                    <%@articles.each do |article|%>
+                    <% article.comments.each do |r| r.replies%>
+                    <% end %>
 
-<ul>
-<% @user.articles.uniq.each do |article|%>
-    <li><h4><%= article.title %></h4><br>
-    Source: <%=article.source%><br>
-    Decription:<%= article.description.first(200)%><br>
-    Click The Link To Learn More:<%=link_to article.url, article.url%>...<br>
-    Published At: <%= article.published_at %><br>
-    <%=link_to 'Click here to add Comment', article_path(article)%></li><br>
-    <ul>
-    <%article.comments.each do |comment| %>
-        <%comment.replies.each do |reply|%>
-    <li><%= comment.user.username %> says: <%= comment.content %></li>
-        <ul>
-            <li><%=reply.user.username %> replied: <%= reply.content %></li>
-        </ul>
-    <% end %>
-        <%end%> 
-    </ul>
-    <br>
-    <% end %>
-</ul>
+                    <ul class="card text-center border-dark mb-3 shadow-sm p-3 bg-white rounded">
+                        <h2><strong><%= article.title %></h2></strong><br>
+                        <h4 class="text-center card border-secondary p-2">Source: <%=article.source%></h4>
+                        <p><em><%= article.description.first(250)%></em></p>
+                        <p> <%=link_to "View Details:", article.url, class: "btn btn-secondary",    role: "button"%>&nbsp <%=link_to "Comments: (#{article.comments.length + article.replies.length})   ", article_comments_path(article), class: "btn btn-secondary" %></p>
+                    </ul>
 
+                    <% end %>
+                </div>
+
+                <div class="col-md-5">
+                    <h1 class="text-center"><%= @user.username %> </h1><br>
+                       
+                        
+                        
+                        <% if @user.avatar.attached? %>
+                        <img src="<%=(url_for(@user.avatar))%>" class="img-fluid img-thumbnail" style= "height: 470px; width: 470px;"> 
+                        <% end %>
+                    <h3 class="text-center"><%= @user.email %></h3>    
+                   
+                </div>
+
+            </div>
+        </div> <!-- /container -->
+
+      
+  
+
+        
+
+
+
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; 2021 2-Slice-Gaming</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

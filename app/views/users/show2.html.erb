@@ -1,0 +1,29 @@
+<h1><%= @user.username %> </h1>
+
+<%= @user.username %> - <%= @user.email %><br><br>
+<% if @user.avatar.attached? %>
+ <img src="<%=(url_for(@user.avatar))%>" class="img-fluid img-thumbnail" style= "height: 670px; width: 670px;"> 
+<% end %>
+
+<ul>
+<% @user.articles.uniq.each do |article|%>
+    <li><h4><%= article.title %></h4><br>
+    Source: <%=article.source%><br>
+    Decription:<%= article.description.first(200)%><br>
+    Click The Link To Learn More:<%=link_to article.url, article.url%>...<br>
+    Published At: <%= article.published_at %><br>
+    <%=link_to 'Click here to add Comment', article_path(article)%></li><br>
+    <ul>
+    <%article.comments.each do |comment| %>
+        <%comment.replies.each do |reply|%>
+    <li><%= comment.user.username %> says: <%= comment.content %></li>
+        <ul>
+            <li><%=reply.user.username %> replied: <%= reply.content %></li>
+        </ul>
+    <% end %>
+        <%end%> 
+    </ul>
+    <br>
+    <% end %>
+</ul>
+

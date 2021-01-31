@@ -29,11 +29,16 @@
                                         </div>
 
                                         <div class="col-4">
-                                            <div class="pull-right reply"> <a href="#"><span><i class="fa   fa-reply"></i> reply</span></a></div>
+                                            <div class="pull-right reply"> <a href="/articles/<%=@article.id%>/comments"><span><i class="fa   fa-reply"></i> reply</span></a></div>
                                         </div>
                                     </div>
 
                                     <%= c.content %>  
+                                            <!--<%=form_for @reply do |f|%>
+                                            <%=f.hidden_field :comment_id, :value=> @comment.id%>
+                                            <%=f.text_area :content %><br>
+                                            <%=f.submit 'Submit Reply'%>
+                                            <%end%>-->
 
                                     <% c.replies.collect do |r|%>
                                         <div class="media mt-4"> 

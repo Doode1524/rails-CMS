@@ -23,7 +23,8 @@ class UsersController < ApplicationController
     end
     
     def show
-    
+        @articles = Article.all.max_by(5){|a| a.comments.length}.reverse
+        @users = User.all
     end
 
     def edit

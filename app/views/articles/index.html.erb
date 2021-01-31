@@ -22,7 +22,7 @@
                         <h2><strong><%= article.title %></h2></strong><br>
                         <h4 class="text-center card border-secondary p-2">Source: <%=article.source%></h4>
                         <p><em><%= article.description.first(250)%></em></p>
-                        <p> <%=link_to "View Details:", article.url, class: "btn btn-secondary",    role: "button"%>&nbsp <%=link_to "Comments: (#{article.comments.length})   ", article_comments_path(article), class: "btn btn-secondary" %></p>
+                        <p> <%=link_to "View Details:", article.url, class: "btn btn-secondary",    role: "button"%>&nbsp <%=link_to "Comments: (#{article.comments.length + article.replies.length})   ", article_comments_path(article), class: "btn btn-secondary" %></p>
                     </ul>
 
                     <% end %>
