@@ -24,13 +24,15 @@ class RepliesController < ApplicationController
     def edit
         find_reply
         @comment = @reply.comment
+        @article = @comment.article
     end
 
     def update
         find_reply
-        article = @reply.comment.article
+        @comment = @reply.comment
+        @article = @comment.article
         if @reply.update(reply_params)
-            redirect_to article_comments_path(article)
+            redirect_to article_comments_path(@article)
         else 
             render :edit
         end
