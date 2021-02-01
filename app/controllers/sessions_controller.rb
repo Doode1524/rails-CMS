@@ -8,14 +8,14 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
-      redirect_to user_path(@user)
+      redirect_to articles_path
     else
       render 'new'
     end
   end
 
   def login
-  
+    
   end
 
   def google

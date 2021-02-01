@@ -4,12 +4,12 @@
     <br>
     <main class="form-signin">
 
-        <%= form_for(:user, url: users_path) do |f| %>
+      <%= form_for(:user, url: users_path) do |f| %>
 
       <div class="text-center mb-4">
-       <%= image_tag "divideicon2.png", class: 'mb-4', style: 'height: 100px; width: 100px;' %>
+        <%= image_tag "divideicon2.png", class: 'mb-4', style: 'height: 100px; width: 100px;' %>
         <h2>DivisioN</h2>
-     </div>
+      </div>
 
 
       <div class="form-label-group">
@@ -43,6 +43,9 @@
         <%= link_to "Sign up with Google", '/auth/google_oauth2', method: :post, class: "button btn btn-lg btn-primary btn-block" %>
         
       <% end %>
+
+      <%= render partial: 'partials/errors', locals: {instance: @user} %>
+
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2021 2-Slice-Gaming</p>
     </main>
    

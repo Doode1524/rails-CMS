@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
         if @comment.save
         redirect_to article_comments_path(@article)
         else
-            render '/articles/show'
+            render :index
         end
     end
 

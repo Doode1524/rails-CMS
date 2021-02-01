@@ -4,6 +4,7 @@
             <div class="col-md-12">
             
                 <h3 class="text-center mb-5"> Ready: FIGHT! </h3>
+                <%= render partial: 'partials/errors', locals: {instance: @comment} %>
                 <%=form_for @comment do |f|%>
                 <%=f.hidden_field :article_id, :value=> @article.id%>
                 <%=f.label :content, 'Edit:' %><br>

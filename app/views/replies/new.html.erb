@@ -2,8 +2,10 @@
     <div class="card">
         <div class="row">
             <div class="col-md-12">
-            
+
                 <h3 class="text-center mb-5"> Ready: FIGHT! </h3>
+                
+                <%= render partial: 'partials/errors', locals: {instance: @reply} %>
                 <%=form_for @reply do |f|%>
                 <%=f.hidden_field :comment_id, :value=> @comment.id%>
                 <%=f.label :content, 'Reply:' %><br>
