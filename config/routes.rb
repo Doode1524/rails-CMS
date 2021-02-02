@@ -2,11 +2,11 @@
 Rails.application.routes.draw do
   resources :subscriptions
   resources :users
-  resources :comments
+  resources :comments, except: [:show, :index]
   resources :replies
   
   resources :articles, only: [:index] do
-    resources :comments, only: [:show, :index]
+    resources :comments, only: [:index]
   end
   
   get 'login' => 'sessions#new'
