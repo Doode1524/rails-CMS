@@ -71,7 +71,8 @@ class CommentsController < ApplicationController
     end
 
     def find_article
-        @article = Article.find(params[:article_id]) 
+        @article = Article.find_by(id: params[:article_id])
+        redirect_to articles_path unless @article
     end
 
     def article_comments
