@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
     
     def index
         # Api.load_data
+        
         @users = User.all
         @comment = Comment.new
 
@@ -16,17 +17,20 @@ class ArticlesController < ApplicationController
     end
 
     def show
+        redirect_if_article_not_found
         @article = Article.find_by_id(params[:id])
         @comment = Comment.new
         @reply = Reply.new
     end
 
     def create
+        redirect_if_article_not_found
         redirect_to articles_path
     end
 
     def update
         find_article
+        redirect_if_article_not_found
         
         if @article.update(article_params)
             redirect_to articles_path
@@ -43,5 +47,9 @@ class ArticlesController < ApplicationController
 
     def article_params
         params.require(:article).permit(comment_attributes: [:content])
+    end
+
+    def redirect_if_article_not_found
+        redirect_to articles_path unless @article
     end
 end
