@@ -2,11 +2,10 @@
 Rails.application.routes.draw do
   resources :subscriptions
   resources :users
-  resources :articles
   resources :comments
   resources :replies
   
-  resources :articles, only: [:show] do
+  resources :articles, only: [:index] do
     resources :comments, only: [:show, :index]
   end
   
