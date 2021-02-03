@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to login_path unless session.include? :user_id
   end
+
+  def fallback
+    redirect_to articles_path
+  end
   
 end
