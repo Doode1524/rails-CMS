@@ -4,35 +4,34 @@ class RepliesController < ApplicationController
     def new
         @reply = Reply.new
         @comment = Comment.find_by_id(params[:id])
-        @article = @comment.article
+        article_comment
     end
     
     def create
         @reply = Reply.new(reply_params)
-        @comment = @reply.comment
-        @article = @comment.article
+        reply_comment
+        article_comment
         @reply.user_id = current_user.id
 
         if @reply.save
-
-        redirect_to article_comments_path(@article) #route to art/id/com/id
+            redirect_to_index #route to art/id/com/id
         else
-             render :'new'
+            render :'new'
         end
     end
 
     def edit
         find_reply
-        @comment = @reply.comment
-        @article = @comment.article
+        reply_comment
+        article_comment
     end
 
     def update
         find_reply
-        @comment = @reply.comment
-        @article = @comment.article
+        reply_comment
+        article_comment
         if @reply.update(reply_params)
-            redirect_to article_comments_path(@article)
+            redirect_to_index
         else 
             render :edit
         end
@@ -40,9 +39,9 @@ class RepliesController < ApplicationController
 
     def destroy
         find_reply
-        article = @reply.comment.article
+        @article = @reply.comment.article
         @reply.delete
-        redirect_to article_comments_path(article)
+        redirect_to_index
     end
 
     private
@@ -53,6 +52,18 @@ class RepliesController < ApplicationController
 
     def find_reply
         @reply = Reply.find_by_id(params[:id])
+    end
+
+    def article_comment
+        @article = @comment.article
+    end
+
+    def reply_comment
+        @comment = @reply.comment
+    end
+
+    def redirect_to_index
+        redirect_to article_comments_path(@article)
     end
 
 end

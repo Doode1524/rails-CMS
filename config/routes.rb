@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :subscriptions
   resources :users
   resources :comments, except: [:show, :index]
-  resources :replies
+  resources :replies, except: [:show, :index]
   
   resources :articles, only: [:index] do
     resources :comments, only: [:index]
