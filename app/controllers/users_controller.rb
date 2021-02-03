@@ -2,10 +2,11 @@ class UsersController < ApplicationController
 
     before_action :find_user, only: [:show, :edit, :update, :destroy]
     before_action :require_login
+    before_action :all_users, only: [:show, :index]
     skip_before_action :require_login, only: [:new, :create] 
 
     def index
-        @users = User.all
+        
     end
 
     def new
@@ -24,7 +25,6 @@ class UsersController < ApplicationController
     
     def show
         @articles = Article.all.max_by(5){|a| (a.comments.length + a.replies.length)}
-        @users = User.all
     end
 
     def edit
@@ -52,6 +52,10 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:username, :email, :password, :avatar)
+    end
+
+    def all_users
+        @users = User.all
     end
 
 end
