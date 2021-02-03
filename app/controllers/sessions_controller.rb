@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     end
 
     if @user && @user.id
-      session[:user_id] = @user.id
+      log_in @user
       redirect_to articles_path
     else
       redirect_to '/login'
