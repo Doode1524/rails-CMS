@@ -23,6 +23,14 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless session.include? :user_id
   end
 
+  def article_comment
+    @article = @comment.article
+  end
+
+  def redirect_to_index
+    redirect_to article_comments_path(@article)
+  end
+
   # def fallback
   #   redirect_to articles_path
   # end

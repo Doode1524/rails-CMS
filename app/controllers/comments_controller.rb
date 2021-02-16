@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
     before_action :find_comment, only: [:edit, :update, :destroy, :delete]
     before_action :find_article, only: [:index]
     before_action :article_comments, only: [:index]
+    before_action :article_comment, except: [:new, :index, :create]
+    
     
     def index
         if @article
@@ -30,11 +32,10 @@ class CommentsController < ApplicationController
     end
 
     def edit
-        article_comment
+        
     end
 
     def update
-        article_comment
         if @comment.update(comment_params)
             redirect_to_index
         else
@@ -43,7 +44,9 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        article_comment
+        @comment.replies.each do |reply|
+            reply.delete
+        end
         @comment.delete
         redirect_to_index
     end
@@ -67,16 +70,8 @@ class CommentsController < ApplicationController
         @comments= @article.comments if @article
     end
 
-    def redirect_to_index
-        redirect_to article_comments_path(@article)
-    end
-    
     def new_comment
         @comment = Comment.new
     end
-
-    def article_comment
-        @article = @comment.article
-    end
-
+    
 end

@@ -1,5 +1,8 @@
 class RepliesController < ApplicationController
     before_action :require_login
+    before_action :find_reply, except: [:new, :create]
+    before_action :reply_comment, except: [:new, :create, :destroy]
+    before_action :article_comment, except: [:new, :create, :destroy]
 
     def new
         @reply = Reply.new
@@ -21,15 +24,10 @@ class RepliesController < ApplicationController
     end
 
     def edit
-        find_reply
-        reply_comment
-        article_comment
+ 
     end
 
     def update
-        find_reply
-        reply_comment
-        article_comment
         if @reply.update(reply_params)
             redirect_to_index
         else 
@@ -38,7 +36,6 @@ class RepliesController < ApplicationController
     end
 
     def destroy
-        find_reply
         @article = @reply.comment.article
         @reply.delete
         redirect_to_index
@@ -53,17 +50,9 @@ class RepliesController < ApplicationController
     def find_reply
         @reply = Reply.find_by_id(params[:id])
     end
-
-    def article_comment
-        @article = @comment.article
-    end
-
+    
     def reply_comment
         @comment = @reply.comment
     end
-
-    def redirect_to_index
-        redirect_to article_comments_path(@article)
-    end
-
+    
 end
