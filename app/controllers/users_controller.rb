@@ -60,12 +60,6 @@ class UsersController < ApplicationController
 
 end
 
-    # def article_info
-    #     current_user.articles.each do |article|
-    #         article.attributes.except("language", "country", "author", "category")
-    #     end
-    # end
 
-    #style
 
 
