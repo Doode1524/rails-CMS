@@ -1,39 +1,31 @@
-# FlatironStudents
+# DivisioN
 
-FlatironStudents is a Rails web app that allows Flatiron students from different programs and cohorts to share the projects they've built and provide anonymous feedback to the projects of their fellow students. The web app also provides a dashboard feature that allows users to see the most recent activities regarding create, update, and delete actions within it's databases, as well as a forum section called "The Watercooler" were students will be able to create discussions.
+Division is an app where users can view news articles from around the world, and have discussions with other users on topics they find interesting.
 
-### Heroku Website
-https://flatiron-students.herokuapp.com/
 
 ## Installation
 
 1. Clone GitHub repository.
-
-```bash
-$ git clone https://github.com/charlesangelolai/flatiron-students.git
-```
+git@github.com:Doode1524/rails-CMS.git
 
 2. Run bundle install inside the project folder
 
-```bash
 $ bundle install
-```
+
 
 3. Create, migrate, and seed our database using rails.
 
-```bash
 $ rails db:create
 $ rails db:migrate
-$ rails db:seed
-```
+$ rails db:seed (this will load Api)
+
+4. uncomment Api.load_data in Articles controller, index action.
 
 ## Usage
 
 1. Run rails s inside the project folder's console
 
-```bash
 $ rails s
-```
 
 2. Navigate to your browser and enter the rails localhost server (default: localhost:3000).
 
@@ -41,29 +33,9 @@ $ rails s
 
 4. Log in with the credentials entered.
 
-5. Connect with your fellow Flatiron students!
+5. Browse articles and argue with others!
 
 
 
 
-
-
-
-################################################################
-
--authorizations
--yield
--omniauth
--subscriptions
--gems
--devise????
--"break" week
-
-
-
-#################
-
-- virtual box
-- distrowatch.com (ubunto)
-- download mirrors
 
