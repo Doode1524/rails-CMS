@@ -14,6 +14,10 @@ class Article < ApplicationRecord
         Article.pluck(:source).uniq.sort
     end
 
+    def self.search_bar(title)
+        where('LOWER (title) LIKE ?', "%#{title.downcase}%")
+    end
+
 end
 
 
