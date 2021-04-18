@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   post 'logout' => 'sessions#destroy'
 
+  get '/top' => 'articles#show' 
+  #code challenge
+
   get 'articles/:id/comments/:id/replies/new' => 'replies#new'
   post 'articles/:id/comments/:id/replies/new' => 'replies#create'
 

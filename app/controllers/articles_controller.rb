@@ -23,6 +23,11 @@ class ArticlesController < ApplicationController
 
     end
 
+    def show
+        @article = Article.all.max_by{|a| (a.comments.length + a.replies.length)}
+    
+    end
+
     private
     def find_article
         @article = Article.find_by_id(params[:id])
